@@ -9,36 +9,36 @@
 </template>
 
 <script>
-import axios from 'axios';
-import Login from './components/Login.vue';
+import axios from 'axios'
+import Login from './components/Login.vue'
 
 export default {
   data() {
     return {
-      isLoggedIn: false,
-    };
+      isLoggedIn: false
+    }
   },
   components: {
-    Login,
+    Login
   },
   methods: {
     async loginUser(userData) {
       try {
-        const response = await axios.post('http://127.0.0.1:8000/login', userData);
+        const response = await axios.post('http://localhost/api/login', userData)
         if (response.data.success) {
-          this.isLoggedIn = true;
+          this.isLoggedIn = true
         } else {
-          alert('Login failed: ' + response.data.message);
+          alert('Login failed: ' + response.data.message)
         }
       } catch (error) {
-        alert('An error occurred: ' + error.message);
+        alert('An error occurred: ' + error.message)
       }
     },
     logout() {
-      this.isLoggedIn = false;
-    },
-  },
-};
+      this.isLoggedIn = false
+    }
+  }
+}
 </script>
 
 <style>
